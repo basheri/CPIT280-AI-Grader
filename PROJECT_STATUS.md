@@ -1,28 +1,57 @@
 # Project Status
 
-**Current mission:** M0 — Repository bootstrap  
-**Overall status:** Prepared for Claude Code  
+**Current mission:** All missions complete (M0–M7)  
+**Overall status:** Ready for deployment  
 **Last updated:** 2026-07-19
 
 ## Completed
 
-- Product scope fixed.
-- No-auth and no-database decisions recorded.
-- Claude Code instructions prepared.
-- Implementation missions defined.
-- Initial Next.js application scaffold prepared.
-- Arabic RTL one-page interface added.
-- Deterministic scoring utilities and tests added.
-- GitHub CI workflow prepared.
+### M0 — Repository bootstrap
+- Dependency installation, lockfile generation, CI verification.
 
-## Pending
+### M1 — Static interface polish & accessibility
+- Client-side validation, `aria-required`/`aria-describedby`/`aria-invalid`, error alerts, loading state.
 
-- Generate and commit `package-lock.json` with `npm install`.
-- Complete the full local M0 verification on the development machine.
-- Implement file extraction and live AI grading in later gated missions.
+### M2 — Domain schemas & score integrity
+- Zod schemas (`GradingInputSchema`, `AIGradingResponseSchema`, `NormalizedGradingResultSchema`).
+- Score normalizer with clamping, rounding, total recalculation, rubric mismatch detection.
 
-## Important constraints
+### M3 — Text & file extraction
+- TXT/PDF/DOCX extractors with MIME type and size validation.
+- Typed `ExtractionError` with error codes.
+
+### M4 — AI grading pipeline
+- Prompt builder with injection resistance.
+- Provider-neutral OpenAI-compatible adapter with 30s timeout.
+- Grade orchestrator and POST `/api/grade` route.
+
+### M5 — Editable grading result
+- Criterion-level editable scores, evidence, rationale.
+- Deterministic total recalculation on edit.
+- Copy, print, and reset actions.
+
+### M6 — End-to-end hardening
+- Integration tests covering happy path, error paths, and edge cases.
+- Test plan documented.
+
+### M7 — Deployment readiness
+- Architecture, grading spec, acceptance criteria documentation.
+- `serverExternalPackages` configured for pdf-parse.
+
+## Test Summary
+
+- 10 test files, 65 tests, all passing.
+- `npm run check` (lint + typecheck + test + build) passes.
+
+## Known Limitations
+
+- PDF text extraction does not work on image-only PDFs.
+- AI grading quality depends on the configured model and provider.
+- No offline mode — requires internet for AI grading.
+- Single-language UI (Arabic only).
+
+## Important Constraints
 
 - Do not expand the product beyond the documented first release.
-- Do not connect a live AI provider before schemas and tests exist.
 - Do not upload real student work as repository fixtures.
+- Do not commit API keys or `.env` files.

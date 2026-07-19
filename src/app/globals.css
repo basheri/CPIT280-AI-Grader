@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f8fb;
+  --foreground: #14213d;
+}
+
+* { box-sizing: border-box; }
+html { direction: rtl; background: var(--background); }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top right, rgba(15, 118, 110, 0.08), transparent 28rem), var(--background);
+  color: var(--foreground);
+  font-family: Arial, "Noto Sans Arabic", sans-serif;
+}
+button, input, textarea { font: inherit; }
+:focus-visible { outline: 3px solid rgba(13, 148, 136, 0.45); outline-offset: 2px; }
+@media print { .no-print { display: none !important; } body { background: white; } }

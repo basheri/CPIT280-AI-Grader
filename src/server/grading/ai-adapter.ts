@@ -1,6 +1,6 @@
 import { AITimeoutError, AIProviderError, AIConnectionError } from "./errors";
 
-const AI_TIMEOUT_MS = 30_000;
+const AI_TIMEOUT_MS = 120_000;
 
 export async function callAI(systemPrompt: string, userPrompt: string): Promise<string> {
   const baseUrl = process.env.AI_API_BASE_URL;

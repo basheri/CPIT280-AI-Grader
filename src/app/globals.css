@@ -15,4 +15,8 @@ body {
 }
 button, input, textarea { font: inherit; }
 :focus-visible { outline: 3px solid rgba(13, 148, 136, 0.45); outline-offset: 2px; }
-@media print { .no-print { display: none !important; } body { background: white; } }
+@media print {
+  .no-print, .print\:hidden { display: none !important; }
+  body { background: white; }
+  section { break-inside: avoid; }
+}
